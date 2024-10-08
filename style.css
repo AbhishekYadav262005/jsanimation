@@ -1,0 +1,19 @@
+html{
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: sans-serif;
+}
+.main{
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    height: 95vh;
+    width: 100%;
+    background-color: aqua;
+    justify-content: center;
+    align-items: center;
+}
+h1{
+    justify-content: center;
+}
