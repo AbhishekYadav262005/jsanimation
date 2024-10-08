@@ -2,7 +2,7 @@ const canvas = document.querySelector("#canvas");
 const ctx = canvas.getContext("2d");
 
 let paddle={
-   width:100,
+   width:130,
     height:10,
 x : (canvas.width / 2) - 50 ,
 y : canvas.height - 20 ,
@@ -13,10 +13,10 @@ vx:0
 let ball = {
     x:canvas.width /2 ,
     y:50 ,
-    radius : 10 ,
-    speed:4,
-    vx:3,
-    vy:3
+    radius : 15 ,
+    speed:8,
+    vx:5,
+    vy:5
 };
 let score = 0 ;
 
@@ -65,7 +65,7 @@ if (ball.y + ball.radius > paddle.y && ball.x > paddle.x && ball.x <paddle.x + p
 
     if(ball.y + ball.radius > canvas.height){
         alert("Game Over ! ");
-        document.location.reload();
+        setTimeout(restartGame,.5);
     }
  }
 
@@ -83,6 +83,19 @@ function update(){
     requestAnimationFrame(update);
 }
 
+function restartGame() {
+
+    paddle.x = (canvas.width / 2) - 50;
+    paddle.vx = 0;
+
+    ball.x = canvas.width / 2;
+    ball.y = 50;
+    ball.vx = 3;
+    ball.vy = 3;
+
+    score = 0;
+    document.getElementById('score').innerText = `Score: ${score}`;
+}
  function keyDown(e){
 if(e.key=="Right" || e.key=="ArrowRight") paddle.vx = paddle.speed ;
 if(e.key=="Left" || e.key =="ArrowLeft") paddle.vx = -paddle.speed ;
@@ -94,7 +107,7 @@ if(e.key=="Left" || e.key =="ArrowLeft") paddle.vx = -paddle.speed ;
    if(e.key=="Right" || e.key=="ArrowRight" || e.key=="Left" || e.key =="ArrowLeft") paddle.vx = 0 
  }
 
- document.addEventListener('keyDown',keyDown);
- document.addEventListener('keyUp' , keyUp);
+ document.addEventListener('keydown',keyDown);
+ document.addEventListener('keyup' , keyUp);
 
  update();
