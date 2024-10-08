@@ -90,8 +90,8 @@ function restartGame() {
 
     ball.x = canvas.width / 2;
     ball.y = 50;
-    ball.vx = 3;
-    ball.vy = 3;
+    ball.vx = 5;
+    ball.vy = 5;
 
     score = 0;
     document.getElementById('score').innerText = `Score: ${score}`;
